@@ -25,7 +25,6 @@ import PlotShow from '@/views/datamanage/components/PlotShow'
 import Console from '@/views/datamanage/components/Console'
 import ToolBar from '@/views/datamanage/components/ToolBar'
 
-
 export default {
   name: 'DashboardAdmin',
   components: {

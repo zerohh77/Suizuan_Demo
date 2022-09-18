@@ -46,7 +46,7 @@ export default {
   data() {
     return {
       // 顶栏标题
-      headerTitle: '随钻软件平台'
+      headerTitle: '人工智能＋高分辨率油气藏探测'
     }
   },
   computed: {
@@ -74,7 +74,7 @@ export default {
   right: 0;
   left: 0;
   z-index: 1001;
-  font-size: 15px;
+  font-size: 12px;
 }
 .bgImage {
   //background: url('../../../assets/images/frame/header.png') no-repeat;
@@ -89,7 +89,7 @@ export default {
 .left {
   flex: 3;
   padding-left: 30px;
-  font-size: 20px;
+  font-size: 35px;
   font-weight: bold;
   color: white;
 }

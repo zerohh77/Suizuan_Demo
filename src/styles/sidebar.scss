@@ -63,7 +63,6 @@
     }
 
     .el-menu {
-      border: none;
       height: 100%;
       width: 100% !important;
     }
@@ -71,6 +70,9 @@
     // menu hover
     .submenu-title-noDropdown,
     .el-submenu__title {
+      border-bottom: 1px solid #97a8be;
+      border-top: 1px solid #97a8be;
+      //border-color: #409EFF;
       &:hover {
         background-color: $menuHover !important;
       }

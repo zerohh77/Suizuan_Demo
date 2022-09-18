@@ -165,7 +165,7 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/prediction/dataloading',
     name: 'Prediction',
-    meta: { title: '钻前预测', icon: 'el-icon-s-help' },
+    meta: { title: '智能探测', icon: 'el-icon-s-help' },
     children: [
       {
         path: 'elasticparameters',

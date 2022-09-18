@@ -2,7 +2,7 @@
   <div style="background-color: white;height:562px">
     WorkFlow
     <div>
-      <el-image style="width: 80%;height: 100%;alignment: center" :src="require('@/assets/images/workflow.jpg')"></el-image>
+      <el-image style="width: 410px;height: 540px;alignment: center" :src="require('@/assets/images/workflow.png')"></el-image>
     </div>
   </div>
 </template>
