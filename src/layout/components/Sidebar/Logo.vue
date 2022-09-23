@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       title: '主要模块',
-      logo: require("@/assets/images/导航.png")
+      logo: require('@/assets/images/导航.png')
     }
   }
 }

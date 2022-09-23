@@ -1,38 +1,59 @@
 <template>
-  <div class="dashboard-editor-container">
-    <el-row style="margin-bottom: 8px">
-      <ToolBar />
+  <div class="goDemo" style="height: 562px">
+    <el-row style="margin-top:10px;text-align:left;">
+      <el-button size="mini" @click="initTreeModel" round>初始化</el-button>
     </el-row>
-    <el-row gutter="10" style="margin-bottom: 8px">
-      <el-col :span="6">
-        <FlowChart />
-      </el-col>
-      <el-col :span="18" v-show="true">
-        <Plotshow_dp1 />
-      </el-col>
-    </el-row>
-    <el-row style="margin-bottom: 0px">
-      <Console />
-    </el-row>
+
+<!--    <el-row style="margin-top:10px;">-->
+<!--      <el-col :span="18">-->
+        <div id="mygoChart" style="width:90%; height:93%; background-color: #F5F5F5;"></div>
+<!--      </el-col>-->
+      <!--      <el-col :span="6" style="text-align:left;">-->
+      <!--        如下功能：<br/>-->
+      <!--        1、树形拖拽<br/>-->
+      <!--        2、树形放大缩小<br/>-->
+      <!--        3、节点的增、删、改（节点鼠标右键）<br/>-->
+      <!--        4、节点关系的拖拽连接00（鼠标点击节点边缘，拖拽指向其他没有关联的节点，自动连接）<br/>-->
+      <!--        5、图纸上初始化一颗新树<br/><br/>-->
+      <!--        注： 打开浏览器F12 ，console打印节点操作的各种信息，方便大家使用-->
+      <!--      </el-col>-->
+<!--    </el-row>-->
+
+    <el-dialog title="树图命名" :visible.sync="dialogTreeNameVisible">
+      <el-form>
+        <el-form-item
+          label="树图名称">
+          <el-input type="text" v-model="tree_group_name" autocomplete="off"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogTreeNameVisible = false">取 消</el-button>
+        <el-button type="primary" @click="saveTreeName">确 定</el-button>
+      </div>
+    </el-dialog>
+
+    <el-dialog title="节点编辑" :visible.sync="dialogUpdateFormVisible">
+      <el-form :model="node_form">
+        <el-form-item
+          v-for="(v,i) in lables_col"
+          :key="i"
+          :label="v.cn_name">
+          <el-input :readonly="v.en_name=='text'?false:true" :type="v.en_name=='text'?'textarea':'text'" :rows="2" v-model="node_form[v.en_name]" autocomplete="off"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogUpdateFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="saveNodeInfo">确 定</el-button>
+      </div>
+    </el-dialog>
 
   </div>
 </template>
 
 <script>
 // import { Inspector } from '@/api/DataInspector'
-import FlowChart from './FlowChart'
-import Console from '@/views/datamanage/components/Console'
-import ToolBar from '@/views/datamanage/components/ToolBar'
-import Plotshow_dp1 from '@/views/dataprocessing/components/plotshow_dp1'
 
 export default {
-  name: 'DashboardAdmin',
-  components: {
-    ToolBar,
-    Console,
-    FlowChart,
-    Plotshow_dp1
-  },
   data() {
     return {
       tree_group_name: "tree_model",
@@ -100,7 +121,7 @@ export default {
 
     // 图表初始化配置
     mySelf.myDiagram = MAKE(go.Diagram, "mygoChart", {
-      "grid.visible": true, //显示网格
+      "grid.visible": false, //显示网格
       grid: MAKE(
         // 网格样式
         go.Panel,
@@ -551,11 +572,6 @@ export default {
   /* width: 400px;
   position: absolute;
   top: 50px; */
-}
-.dashboard-editor-container {
-  padding: 8px;
-  background-color: rgb(230,230,230);
-  position: relative;
 }
 </style>
 
